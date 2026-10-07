@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<title>f4sT357 // PORTAL</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;800&family=Share+Tech+Mono&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#06060c;--bg2:#0c0c18;--ink:#d8e6ff;--dim:#7d8bab;
+  --cy:#00f0ff;--mg:#ff2a6d;--ye:#f9f002;--line:rgba(0,240,255,.28);
+  --disp:'Orbitron','Share Tech Mono',ui-monospace,monospace;
+  --mono:'Share Tech Mono',ui-monospace,Menlo,Consolas,monospace;
+  --jp:'Noto Sans JP','Hiragino Sans','Yu Gothic',sans-serif;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+html{scroll-behavior:smooth;scroll-padding-top:calc(64px + env(safe-area-inset-top,0px));color-scheme:dark;background:var(--bg)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.8 var(--jp);overflow-x:hidden;
+  background-image:linear-gradient(rgba(0,240,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(0,240,255,.05) 1px,transparent 1px);
+  background-size:48px 48px}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;
+  background:repeating-linear-gradient(0deg,rgba(0,0,0,.22) 0 1px,transparent 1px 3px);mix-blend-mode:multiply}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;
+  background:radial-gradient(60vw 40vh at 85% 0%,rgba(255,42,109,.18),transparent),radial-gradient(60vw 50vh at 0% 30%,rgba(0,240,255,.12),transparent)}
+a{color:var(--cy);text-decoration:none}
+a:hover{color:var(--ye)}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:rgba(6,6,12,.82);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:56px;gap:12px}
+.logo{font:800 14px var(--disp);letter-spacing:.14em;color:var(--cy);white-space:nowrap}
+.logo b{color:var(--mg)}
+nav{display:flex;gap:6px;overflow-x:auto}
+nav a{font:12px var(--mono);letter-spacing:.12em;color:var(--dim);padding:6px 10px;border:1px solid transparent;white-space:nowrap}
+nav a:hover{color:var(--cy);border-color:var(--line)}
+section{padding:84px 0 24px}
+.tag{font:12px var(--mono);letter-spacing:.3em;color:var(--mg);margin:0 0 6px}
+h2{font:800 clamp(24px,4vw,34px)/1.2 var(--disp);letter-spacing:.06em;margin:0 0 8px;color:#fff}
+h2 span{color:var(--cy)}
+.lead{color:var(--dim);margin:0 0 28px;max-width:62ch}
+/* hero */
+.hero{padding:72px 0 8px;min-height:78vh;display:flex;align-items:center}
+.boot{font:13px/1.7 var(--mono);color:var(--cy);min-height:5.2em;margin:0 0 14px;opacity:.9}
+.boot i{font-style:normal;color:var(--ye)}
+.glitch{font:800 clamp(40px,10vw,104px)/1 var(--disp);letter-spacing:.02em;margin:0;color:#fff;position:relative;display:inline-block;text-shadow:0 0 18px rgba(0,240,255,.5)}
+.glitch::before,.glitch::after{content:attr(data-t);position:absolute;inset:0;overflow:hidden}
+.glitch::before{color:var(--mg);transform:translate(3px,0);clip-path:inset(0 0 55% 0);animation:gl 3.2s infinite steps(1)}
+.glitch::after{color:var(--cy);transform:translate(-3px,0);clip-path:inset(55% 0 0 0);animation:gl 2.6s infinite steps(1) reverse}
+@keyframes gl{0%,88%,100%{transform:translate(0)}90%{transform:translate(4px,-2px)}93%{transform:translate(-4px,2px)}96%{transform:translate(2px,1px)}}
+.role{font:700 clamp(15px,2.6vw,20px)/1.6 var(--jp);margin:18px 0 6px}
+.role em{font-style:normal;color:var(--ye)}
+.sub{color:var(--dim);max-width:60ch;margin:0 0 22px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 28px;padding:0;list-style:none}
+.chips li{font:12px var(--mono);letter-spacing:.08em;padding:4px 10px;border:1px solid var(--line);color:var(--cy);background:rgba(0,240,255,.05)}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-block;font:700 13px var(--disp);letter-spacing:.14em;padding:13px 22px;color:#06060c;background:var(--cy);cursor:pointer;border:0;
+  clip-path:polygon(12px 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%,0 12px);transition:.2s}
+.btn:hover{background:var(--ye);color:#06060c;transform:translateY(-2px)}
+.btn.alt{background:transparent;color:var(--cy);box-shadow:inset 0 0 0 1px var(--cy)}
+.btn.alt:hover{background:rgba(249,240,2,.1);color:var(--ye);box-shadow:inset 0 0 0 1px var(--ye)}
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-top:48px}
+.stat{background:var(--bg2);padding:18px}
+.stat b{display:block;font:800 30px var(--disp);color:var(--cy)}
+.stat span{font:12px var(--mono);color:var(--dim);letter-spacing:.06em}
+/* cards */
+.grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))}
+.card{position:relative;background:linear-gradient(160deg,var(--bg2),#080812);border:1px solid var(--line);padding:22px;display:flex;flex-direction:column;gap:10px;
+  clip-path:polygon(0 0,calc(100% - 18px) 0,100% 18px,100% 100%,18px 100%,0 calc(100% - 18px));transition:.25s}
+.card:hover{border-color:var(--cy);transform:translateY(-4px);box-shadow:0 0 28px rgba(0,240,255,.18)}
+.card.feat{grid-column:1/-1;border-color:rgba(255,42,109,.6)}
+.card .k{font:11px var(--mono);letter-spacing:.22em;color:var(--mg)}
+.card h3{font:800 18px/1.35 var(--disp);margin:0;color:#fff;letter-spacing:.03em;overflow-wrap:anywhere}
+.card p{margin:0;color:var(--ink);opacity:.86;font-size:14.5px}
+.meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:6px}
+.meta span{font:11px var(--mono);padding:2px 8px;border:1px solid rgba(249,240,2,.4);color:var(--ye)}
+.go{font:12px var(--mono);letter-spacing:.14em;margin-top:4px}
+/* approach */
+.ap{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));margin-top:20px}
+.ap div{border-left:2px solid var(--mg);padding:4px 0 4px 16px}
+.ap b{font:700 15px var(--jp);color:#fff}
+.ap p{margin:4px 0 0;color:var(--dim);font-size:14px}
+/* notes list */
+.notes{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.notes li{border-bottom:1px solid var(--line);padding:11px 4px;font-size:14.5px}
+.notes li::before{content:">> ";font-family:var(--mono);color:var(--mg)}
+/* create */
+.deck{border:1px solid var(--cy);background:rgba(0,240,255,.03);padding:22px;display:grid;gap:18px;box-shadow:0 0 40px rgba(0,240,255,.08)}
+.prompt{font:700 clamp(17px,3vw,22px)/1.6 var(--jp);color:#fff;min-height:3.2em;border-left:3px solid var(--ye);padding-left:14px}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.timer{font:800 28px var(--disp);color:var(--ye);min-width:3.2ch}
+textarea{width:100%;min-height:200px;resize:vertical;background:#04040a;color:var(--ink);border:1px solid var(--line);padding:14px;font:15px/1.9 var(--jp);outline:none}
+textarea:focus{border-color:var(--cy);box-shadow:0 0 0 2px rgba(0,240,255,.2)}
+.cnt{font:12px var(--mono);color:var(--dim)}
+.ql{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr))}
+.ql a{display:block;border:1px solid var(--line);padding:12px 14px;font:12px var(--mono);letter-spacing:.1em}
+.ql a small{display:block;color:var(--dim);font-size:11px;letter-spacing:.04em}
+.ql a:hover{border-color:var(--ye)}
+footer{margin-top:80px;border-top:1px solid var(--line);padding:28px 0 40px;font:12px var(--mono);color:var(--dim)}
+footer .links{display:flex;gap:18px;flex-wrap:wrap;margin-bottom:10px}
+.rv{opacity:0;transform:translateY(18px);transition:.7s}
+.rv.on{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.glitch::before,.glitch::after{animation:none}.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="logo" href="#top">F4S<b>T</b>357 // PORTAL</a>
+  <nav><a href="#works">WORKS</a><a href="#logs">LOGS</a><a href="#create">CREATE</a><a href="#link">LINK</a></nav>
+</div></header>
+
+<main id="top">
+<div class="wrap">
+  <div class="hero"><div>
+    <p class="boot" id="boot" aria-hidden="true"></p>
+    <h1 class="glitch" data-t="f4sT357">f4sT357</h1>
+    <p class="role"><em>PdM</em> / 事業企画 / AI基盤 志望。実行より先に、<em>問題定義と評価設計</em>を詰めるタイプ。</p>
+    <p class="sub">ローカルLLM基盤の自作、ハルシネーション検出ツール、プロンプト運用の標準化。作って、評価して、公開してきたものをここにまとめている。</p>
+    <ul class="chips"><li>2028卒（予定）</li><li>情報系 / 日本</li><li>Python</li><li>Linux</li><li>LM Studio</li><li>Kanto</li></ul>
+    <div class="btns"><a class="btn" href="#works">VIEW WORKS</a><a class="btn alt" href="https://github.com/f4sT357" target="_blank" rel="noopener">GITHUB →</a><a class="btn alt" href="#create">BOOT CREATE</a></div>
+  </div></div>
+  <div class="stats rv">
+    <div class="stat"><b>12</b><span>PUBLIC REPOS</span></div>
+    <div class="stat"><b>5</b><span>PINNED PROJECTS</span></div>
+    <div class="stat"><b>1</b><span>GITHUB ACHIEVEMENT<br>(Pull Shark)</span></div>
+    <div class="stat"><b>1</b><span>完結SF（カクヨム）</span></div>
+  </div>
+</div>
+
+<section id="works"><div class="wrap">
+  <p class="tag">// 01 WORKS</p>
+  <h2>プロダクト<span>/</span>実績</h2>
+  <p class="lead">GitHubのピン留め作品。数値は2026-10-07時点の公開ページ表示ベース。</p>
+  <div class="grid">
+    <a class="card feat rv" href="https://github.com/f4sT357/PLAMA" target="_blank" rel="noopener">
+      <span class="k">FLAGSHIP // LOCAL LLM INFRA</span>
+      <h3>PLAMA</h3>
+      <p>ローカルLLM基盤と調査エージェントの開発プロジェクト。精度重視タスクと、RAG・要約・バイアス検出タスクでモデルを使い分けるデュアルルーティング構成。小型モデルのハルシネーション抑制を主な評価テーマにしている。</p>
+      <div class="meta"><span>Python</span><span>LangGraph</span><span>FastAPI</span><span>ChromaDB</span><span>LM Studio</span><span>v2.0</span></div>
+      <span class="go">OPEN REPO →</span>
+    </a>
+    <a class="card rv" href="https://github.com/f4sT357/Halluci_Detector" target="_blank" rel="noopener">
+      <span class="k">TOOL // EVALUATION</span>
+      <h3>Halluci_Detector</h3>
+      <p>ハルシネーションを検出するコストを下げるためのGUIツール（日本語向け）。</p>
+      <div class="meta"><span>GUI</span><span>JA</span></div>
+      <span class="go">OPEN REPO →</span>
+    </a>
+    <a class="card rv" href="https://github.com/f4sT357/Gen_Ai_Normalizer_For_Power_Users" target="_blank" rel="noopener">
+      <span class="k">TOOL // PROMPT OPS</span>
+      <h3>GANFPU</h3>
+      <p>プロンプトエンジニアリングのワークフローを標準化する、軽量・ローカル完結の開発者向けツール。多言語対応、拡張前提の設計。</p>
+      <div class="meta"><span>Local-only</span><span>Multi-lang</span><span>HTML</span></div>
+      <span class="go">OPEN REPO →</span>
+    </a>
+    <a class="card rv" href="https://github.com/f4sT357/wuwacalc1.1" target="_blank" rel="noopener">
+      <span class="k">APP // OCR</span>
+      <h3>wuwacalc1.1</h3>
+      <p>鳴潮の装備（echo）スコア計算機。OCRで画面から読み取る。シンプル版は wuwacalc_simple。</p>
+      <div class="meta"><span>Python</span><span>OCR</span></div>
+      <span class="go">OPEN REPO →</span>
+    </a>
+  </div>
+  <div class="ap rv">
+    <div><b>評価を先に置く</b><p>Halluci_Detectorは検出コスト、PLAMAは小型モデルの嘘の出方。どちらも「何を測るか」から作っている。</p></div>
+    <div><b>ローカルで回す</b><p>GANFPUもPLAMAもローカル前提。自宅サーバー＋LM Studioで運用しながら検証している。</p></div>
+    <div><b>出して直す</b><p>PLAMAはv2.0まで反復。公開リポジトリが12本あるのは、そのまま試行回数の記録になる。</p></div>
+  </div>
+</div></section>
+
+<section id="logs"><div class="wrap">
+  <p class="tag">// 02 LOGS</p>
+  <h2>執筆<span>/</span>ログ</h2>
+  <p class="lead">技術の周辺で書いているもの。カクヨムのSFと、noteの自転車整備記事。</p>
+  <div class="grid">
+    <a class="card rv" href="https://kakuyomu.jp/works/2912051596050883362" target="_blank" rel="noopener">
+      <span class="k">KAKUYOMU // SF // 完結</span>
+      <h3>サイレント・ノイズ</h3>
+      <p>元AIエンジニアのレンは、骨董品のロードバイクをガレージで整備する。変速のたびに鳴るカチッという音だけが、彼の「理由」だった。ある夜、AIの監視員を名乗る女が訪ねてくる。</p>
+      <div class="meta"><span>近未来SF</span><span>8,958字</span><span>2026-03-23更新</span><span>AI本文利用</span></div>
+      <span class="go">READ ON KAKUYOMU →</span>
+    </a>
+    <div class="card rv">
+      <span class="k">NOTE // BIKE MAINTENANCE</span>
+      <h3>機械式変速のスポーツ自転車整備</h3>
+      <ul class="notes">
+        <li>Escape R3のために3万円程度かける場合の初心者向け整備環境構築、長期耐久案</li>
+        <li>GIANT Escape R3のもつペイン</li>
+        <li>Vブレーキブースターのすゝめ</li>
+        <li>基本amazon縛りで簡単なescapeカスタム案を考えるよ 工具も</li>
+      </ul>
+      <a class="go" href="https://note.com/f4s_san" target="_blank" rel="noopener">ALL ARTICLES ON NOTE →</a>
+    </div>
+  </div>
+</div></section>
+
+<section id="create"><div class="wrap">
+  <p class="tag">// 03 CREATE//BOOT</p>
+  <h2>創作<span>/</span>ブートローダー</h2>
+  <p class="lead">白紙が一番重い。お題を引く → タイマーを押す → 書く。この3手だけで始められる。下書きはこの端末のブラウザに自動保存される。</p>
+  <div class="deck rv">
+    <div class="prompt" id="prompt">[ROLL] を押してお題を引く</div>
+    <div class="row">
+      <button class="btn" id="roll" type="button">ROLL</button>
+      <button class="btn alt" id="start" type="button">START 15:00</button>
+      <button class="btn alt" id="reset" type="button">RESET</button>
+      <span class="timer" id="timer">15:00</span>
+    </div>
+    <textarea id="pad" placeholder="ここに書き殴る。整えるのは後。" aria-label="下書き"></textarea>
+    <div class="row"><span class="cnt" id="cnt">0 字</span><button class="btn alt" id="copy" type="button">COPY</button><button class="btn alt" id="clear" type="button">CLEAR</button></div>
+    <div class="ql">
+      <a href="https://kakuyomu.jp/my/antenna/works" target="_blank" rel="noopener">KAKUYOMU<small>マイページを開く</small></a>
+      <a href="https://note.com/notes/new" target="_blank" rel="noopener">NOTE<small>新規記事を書く</small></a>
+      <a href="https://github.com/new" target="_blank" rel="noopener">GITHUB<small>新しいリポジトリを作る</small></a>
+    </div>
+  </div>
+</div></section>
+
+<section id="link"><div class="wrap">
+  <p class="tag">// 04 LINK</p>
+  <h2>外部<span>/</span>リンク</h2>
+  <div class="ql rv">
+    <a href="https://github.com/f4sT357" target="_blank" rel="noopener">GITHUB<small>f4sT357</small></a>
+    <a href="https://kakuyomu.jp/users/fastest/works" target="_blank" rel="noopener">KAKUYOMU<small>@fastest</small></a>
+    <a href="https://note.com/f4s_san" target="_blank" rel="noopener">NOTE<small>f4s_san</small></a>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <div class="links"><a href="https://github.com/f4sT357" target="_blank" rel="noopener">GitHub</a><a href="https://kakuyomu.jp/users/fastest/works" target="_blank" rel="noopener">カクヨム</a><a href="https://note.com/f4s_san" target="_blank" rel="noopener">note</a></div>
+  <div>&copy; 2026 f4sT357 // END OF TRANSMISSION</div>
+</div></footer>
+
+<script>
+(function(){
+  var $=function(i){return document.getElementById(i)};
+  var rm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // boot text
+  var lines=['> SYSTEM BOOT ........ OK','> LOADING PORTFOLIO ... OK','> <i>WELCOME, VISITOR.</i>'];
+  var b=$('boot');
+  if(rm){b.innerHTML=lines.join('<br>')}
+  else{var li=0,ci=0,out='';(function t(){
+    if(li>=lines.length)return;
+    var L=lines[li];ci++;
+    var cur=L.slice(0,ci);
+    b.innerHTML=out+cur+(ci<L.length?'_':'');
+    if(ci>=L.length){out+=L+'<br>';li++;ci=0;setTimeout(t,260)}else setTimeout(t,22);
+  })()}
+  // reveal
+  var els=document.querySelectorAll('.rv');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}})},{threshold:.12});
+    els.forEach(function(e){io.observe(e)});
+  }else els.forEach(function(e){e.classList.add('on')});
+  // prompt generator
+  var who=['記憶を売る店員','引退した整備士','眠らない監視AI','終電を逃した配達員','廃棄寸前の翻訳機','名前を捨てた研究者','ガレージで暮らす元エンジニア'];
+  var what=['誰にも読まれない手紙を','壊れた変速の音を','消されたログを','最後のバックアップを','存在しない街の地図を','嘘のつけない検索結果を'];
+  var how=['夜明けまでに','一度だけ','許可なしで','雨の中で','誰にも言わずに','証拠を残さずに'];
+  var end=['届ける','取り戻す','書き換える','忘れる','暴く','直す'];
+  function pick(a){return a[Math.floor(Math.random()*a.length)]}
+  $('roll').onclick=function(){$('prompt').textContent=pick(who)+'が、'+pick(how)+pick(what)+pick(end)+'話。'};
+  // timer
+  var tm=null,left=900;
+  function show(){var m=Math.floor(left/60),s=left%60;$('timer').textContent=(m<10?'0':'')+m+':'+(s<10?'0':'')+s}
+  $('start').onclick=function(){
+    if(tm){clearInterval(tm);tm=null;$('start').textContent='RESUME';return}
+    $('start').textContent='PAUSE';
+    tm=setInterval(function(){left--;show();if(left<=0){clearInterval(tm);tm=null;$('start').textContent='START 15:00';left=900;$('timer').textContent='TIME UP'}},1000);
+    $('pad').focus();
+  };
+  $('reset').onclick=function(){clearInterval(tm);tm=null;left=900;show();$('start').textContent='START 15:00'};
+  // pad
+  var pad=$('pad'),KEY='portal-pad';
+  function cnt(){$('cnt').textContent=pad.value.replace(/\s/g,'').length+' 字'}
+  try{var v=localStorage.getItem(KEY);if(v)pad.value=v}catch(e){}
+  cnt();
+  pad.addEventListener('input',function(){cnt();try{localStorage.setItem(KEY,pad.value)}catch(e){}});
+  $('clear').onclick=function(){if(pad.value&&!confirm('下書きを消す？'))return;pad.value='';cnt();try{localStorage.removeItem(KEY)}catch(e){}};
+  $('copy').onclick=function(){
+    pad.select();
+    try{if(navigator.clipboard){navigator.clipboard.writeText(pad.value)}else{document.execCommand('copy')}$('copy').textContent='COPIED'}catch(e){$('copy').textContent='選択済み'}
+    setTimeout(function(){$('copy').textContent='COPY'},1400);
+  };
+})();
+</script>
+</body>
+</html>
