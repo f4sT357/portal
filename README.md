@@ -1,7 +1,7 @@
 # portal
 
 f4sT357 の就活用ポータルサイト（サイバーパンクテーマ）。単一の index.html で完結。
-
+https://f4st357.github.io/portal/
 - WORKS: GitHub のピン留め作品
 - LOGS: カクヨム / note
 - CREATE//BOOT: お題ルーレット・15分タイマー・自動保存つき下書きパッド
